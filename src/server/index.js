@@ -1,3 +1,5 @@
+const dotenv = require('dotenv');
+dotenv.config();
 var path = require('path')
 const express = require('express')
 const mockAPIResponse = require('./mockAPI.js')
@@ -21,3 +23,22 @@ app.listen(8080, function () {
 app.get('/test', function (req, res) {
     res.send(mockAPIResponse)
 })
+let pubURL = 'https://api.meaningcloud.com/sentiment-2.1?key=';
+const jsonText = '&of=json&txt=';
+let app_key= process.env.API_KEY
+const last = '&model=General&lang=en';
+console.log(`My API key is ${app_key}`);
+//POST request
+app.post("/addData", async(req, res)=>{
+    const getSentiment = await fetch(`${pubURL}${app_Key}${jsonText}${req.body.formText}${last}`,{
+        method: 'POST'
+    });
+    try{
+        const data = await getSentiment.json();
+        console.log(getSentiment, data)
+        res.send(data);
+    }catch(error){
+        console.log("error", error);
+}
+
+});
