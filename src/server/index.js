@@ -31,7 +31,8 @@ const last = '&model=General&lang=en';
 console.log(`My API key is ${app_key}`);
 //POST request
 app.post("/addData", async(req, res)=>{
-    const getSentiment = await fetch(`${pubURL}${app_Key}${jsonText}${req.body.formText}${last}`,{
+    const in_Text = req.body.inputText;
+    const getSentiment = await fetch(`${pubURL}${app_Key}${jsonText}${in_Text}${last}`,{
         method: 'POST'
     });
     try{
