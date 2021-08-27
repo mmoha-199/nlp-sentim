@@ -6,7 +6,7 @@
     if(Client.checkForName(formText)){
 
       console.log("::: Form Submitted :::")
-       fetch('http://localhost:8080/addData',{
+       fetch('http://localhost:8081/addData',{
           method: 'POST',
           credentials: 'same-origin',
           headers:{
