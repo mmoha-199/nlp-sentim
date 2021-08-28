@@ -1,4 +1,4 @@
- function handleSubmit(event) {
+function handleSubmit(event) {
     event.preventDefault()
 
     // check what text was put into the form field
@@ -9,46 +9,47 @@
        fetch('http://localhost:8081/addData',{
           method: 'POST',
           credentials: 'same-origin',
+          mode: 'cors',
           headers:{
             'Content-Type':'application/json',
           },
           body:JSON.stringify({formText: formText}),
         })
-      .then(res => res.json())
-      .then(function(res) {
+      .then(response => response.json())
+      .then(function(response) {
         const results = document.getElementById('results');
         results.scrollIntoView(false, {
             behavior:'smooth',
         block:"end"})
     
         document.getElementById('confidence').innerHTML = "- Feelings of confidence in this text are given a rating of "+ res.confidence +"%";
-        if (res.score_tag === 'N'){
+        if (response.score_tag === 'N'){
         document.getElementById('polarity').innerHTML = "- Overall, the tone is negative." }
-        else if(res.score_tag === 'N+'){
+        else if(response.score_tag === 'N+'){
             document.getElementById('polarity').innerHTML = "- Overall, the tone is very negative."}
-        else if(res.score_tag === 'NONE'){
+        else if(response.score_tag === 'NONE'){
             document.getElementById('polarity').innerHTML = "- No sentiment is detected."}
-        else if(res.score_tag === 'P+'){
+        else if(response.score_tag === 'P+'){
             document.getElementById('polarity').innerHTML = "- Overall, the tone is very positive"}
-        else if(res.score_tag === 'NEU'){
+        else if(response.score_tag === 'NEU'){
             document.getElementById('polarity').innerHTML = "- Overall, the tone is neutral."}
-         else if(res.score_tag === 'P'){
+         else if(response.score_tag === 'P'){
             document.getElementById('polarity').innerHTML = "- Overall, the tone is positive."};
-        if (res.agreement === 'AGREEMENT'){
+        if (response.agreement === 'AGREEMENT'){
             document.getElementById('agreement').innerHTML = "- This tone is consistent throughout the text"}
-        else if(res.agreement === 'DISAGREEMENT'){
+        else if(response.agreement === 'DISAGREEMENT'){
             document.getElementById('agreement').innerHTML = "- However, this tone isn't consistent throughout the text"};
-        if(res.subjectivity === 'OBJECTIVE'){
+        if(response.subjectivity === 'OBJECTIVE'){
             document.getElementById('obj').innerHTML = "- Our analysis notes that this article is more objective than subjective."}
-        else if(res.subjectivity === 'SUBJECTIVE'){
+        else if(response.subjectivity === 'SUBJECTIVE'){
             document.getElementById('obj').innerHTML = "- Our analysis notes that this article is more subjective than objective." }
-        else if(res.subjectivity === null){
+        else if(response.subjectivity === null){
             document.getElementById('obj').innerHTML = ""}; 
-        if(res.irony === 'NONIRONIC'){
+        if(response.irony === 'NONIRONIC'){
             document.getElementById('ironic').innerHTML = "-We detected no irony."}
-        else if(res.irony === 'IRONIC'){
+        else if(response.irony === 'IRONIC'){
             document.getElementById('ironic').innerHTML = "-Also, we detected a level of irony."}
-        else if(res.irony === null){
+        else if(response.irony === null){
             document.getElementById('ironic').innerHTML = ""}  
         })
       console.log("::: Form Submitted :::");
