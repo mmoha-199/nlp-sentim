@@ -31,6 +31,7 @@
     "css-loader": "^5.0.2",
     "file-loader": "^6.2.0",
     "html-webpack-plugin": "^3.2.0",
+    "jest": "^27.1.0",
     "media-query-plugin": "^1.5.0",
     "mini-css-extract-plugin": "^1.3.8",
     "node-sass": "^5.0.0",
