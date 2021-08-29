@@ -8,6 +8,9 @@ const WorkboxPlugin = require("workbox-webpack-plugin");
 
 
 module.exports = {
+    devServer:{
+        port: 8081,
+       },
     entry: './src/client/index.js',
     output: {
          libraryTarget: 'var',

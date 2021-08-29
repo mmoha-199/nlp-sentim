@@ -1,4 +1,3 @@
-const data = {};
 const dotenv = require('dotenv');
 dotenv.config();
 const fetch = require('node-fetch');
@@ -17,25 +16,25 @@ app.get('/', function (req, res) {
 })
 
 // designates what port the app will listen to for incoming requests
-app.listen(8081, function () {
-    console.log('Example app listening on port 8081!')
+app.listen(8085, function () {
+    console.log('Example app listening on port 8085!')
 })
 
 
 let pubURL = 'https://api.meaningcloud.com/sentiment-2.1?key=';
-const jsonText = '&lang=auto&url';
+const urlText = '&url=';
 const app_key= process.env.API_KEY
-//const last = '&model=General&lang=en';
+const last = '&model=General&lang=en';
 console.log(`My API key is ${app_key}`);
 //POST request
 app.post("/addData", async(req, res)=>{
     const in_Text = req.body.formText;
-    const response = await fetch(`${pubURL}${app_Key}${jsonText}${in_Text}`,{
+    const finalUrl = await fetch(`${pubURL}${app_Key}${jsonText}${urlText}${in_Text}${last}`,{
         method: 'POST'
     });
     try{
-        const data = await response.json();
-        console.log(response, data)
+        const data = await finalUrl.json();
+        console.log(data)
         res.send(data);
     }catch(error){
         console.log("error", error);
