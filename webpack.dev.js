@@ -11,7 +11,7 @@ module.exports = {
     entry: './src/client/index.js',
     output: {
          libraryTarget: 'var',
-         library: 'Client'     
+         library: 'Client'  ,
         },
     mode: 'development',
     devtool: 'source-map',
@@ -46,7 +46,7 @@ module.exports = {
             verbose: true,
             // Automatically remove all unused webpack assets on rebuild
             cleanStaleWebpackAssets: true,
-            protectWebpackAssets: false
+            protectWebpackAssets: false,
         }),
         new MiniCssExtractPlugin({filename:"[name].css"}),
         new WorkboxPlugin.GenerateSW(),

@@ -1,9 +1,10 @@
-import dotenv from 'dotenv';
+const dotenv = require('dotenv');
 dotenv.config();
-import fetch from 'node-fetch';
-import path from 'path';
-import express from 'express';
-import mockAPIResponse from './mockAPI.js';
+const fetch = require('node-fetch');
+const path = require('path');
+const express = require('express');
+const mockAPIResponse = require('./mockAPI.js');
+const cors = require('cors');
 
 const app = express();
 
@@ -22,7 +23,7 @@ app.listen(8080, function () {
 });
 
 //POST request
-var pubURL = 'https://api.meaningcloud.com/sentiment-2.1?key=';
+var pubURL = 'http://api.meaningcloud.com/sentiment-2.1?key=';
 const urlText = '&url=';
 const app_key= process.env.API_KEY;
 const last = '&model=General&lang=en';
