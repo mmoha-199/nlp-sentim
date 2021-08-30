@@ -8,9 +8,6 @@ const WorkboxPlugin = require("workbox-webpack-plugin");
 
 
 module.exports = {
-    devServer:{
-        port: 8081,
-       },
     entry: './src/client/index.js',
     output: {
          libraryTarget: 'var',
@@ -19,6 +16,7 @@ module.exports = {
     mode: 'development',
     devtool: 'source-map',
     stats: 'verbose',
+    target: 'node',
     module: {
         rules: [
             {
@@ -51,6 +49,6 @@ module.exports = {
             protectWebpackAssets: false
         }),
         new MiniCssExtractPlugin({filename:"[name].css"}),
-        new WorkboxPlugin.GenerateSW()
+        new WorkboxPlugin.GenerateSW(),
     ]
 }

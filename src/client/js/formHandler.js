@@ -1,3 +1,5 @@
+import { response } from "express";
+
 function handleSubmit(event) {
     event.preventDefault()
 
@@ -5,17 +7,15 @@ function handleSubmit(event) {
     let formText = document.getElementById('name').value;
     if(Client.checkForName(formText)){
 
-      console.log("::: Form Submitted :::")
-       fetch('http://localhost:8081/addData',{
+     
+       fetch('http://localhost:8080/addData',{
           method: 'POST',
           credentials: 'same-origin',
-          mode: 'cors',
-          headers:{
-            'Content-Type':'application/json',
-          },
+          headers:{'Content-Type':'application/json',},
           body:JSON.stringify({formText: formText}),
         })
       .then(response => response.json())
+      console.log(response)
       .then(function(response) {
         const results = document.getElementById('results');
         results.scrollIntoView(false, {

@@ -6,6 +6,7 @@ const TerserPlugin = require('terser-webpack-plugin')
 const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin')
 const WorkboxPlugin = require("workbox-webpack-plugin");
 
+
 module.exports = {
     optimization: {
         minimizer: [new TerserPlugin({}),
@@ -15,6 +16,7 @@ module.exports = {
         libraryTarget:'var',
     library:'Client'
 },
+    target: 'node',
     entry: './src/client/index.js',
     mode: 'production',
     module: {
@@ -43,6 +45,6 @@ module.exports = {
         new MiniCssExtractPlugin({
             filename: "[name].css"
         }),
-        new WorkboxPlugin.GenerateSW()
+        new WorkboxPlugin.GenerateSW(),
     ]
 }
