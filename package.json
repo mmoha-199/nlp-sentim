@@ -1,8 +1,7 @@
 {
-  "name": "sentim-project",
+  "name": "example-project",
   "version": "1.0.0",
   "main": "index.js",
-  "type": "commonjs",
   "scripts": {
     "build": "webpack",
     "test": "jest",
@@ -18,12 +17,10 @@
     "dotenv": "^10.0.0",
     "express": "^4.17.1",
     "jest-fetch-mock": "^3.0.3",
-    "requirejs": "^2.3.6",
-    "webpack": "^5.52.0",
-    "webpack-cli": "^4.8.0"
+    "webpack": "^5.52.0"
   },
   "devDependencies": {
-    "@babel/core": "^7.15.4",
+    "@babel/core": "^7.15.5",
     "@babel/plugin-transform-modules-commonjs": "^7.15.4",
     "@babel/preset-env": "^7.15.4",
     "babel-loader": "^8.2.2",
@@ -43,6 +40,7 @@
     "sass-loader": "^12.1.0",
     "style-loader": "^3.2.1",
     "terser-webpack-plugin": "^5.2.3",
+    "webpack-cli": "^4.8.0",
     "webpack-dev-server": "^4.1.0",
     "workbox-webpack-plugin": "^6.2.4"
   }
